@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  wealthy_ui:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./docker/ui/Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - static_volume:/app/wealthy_api/wealth-service/django_static
+      - ./docker/nginx/development:/etc/nginx/conf.d
+    depends_on:
+      - wealthy_api
+  wealthy_api:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./docker/api/Dockerfile
+    entrypoint: ./docker/api/process_runner.sh
+    volumes:
+      - static_volume:/app/wealthy_api/wealth-service/django_static
+    expose:
+      - 8000
+
+volumes:
+  static_volume: {}
