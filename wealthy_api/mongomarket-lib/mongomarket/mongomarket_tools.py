@@ -3,7 +3,8 @@ import pymongo
 
 def _get_db():
     # cli = pymongo.MongoClient("mongodb://172.17.0.2:27017/")
-    cli = pymongo.MongoClient("mongodb://localhost:27017/")
+    # cli = pymongo.MongoClient("mongodb://localhost:27017/")
+    cli = pymongo.MongoClient("mongodb://127.0.0.1:27017/")
     db = cli['market']
     return db
 

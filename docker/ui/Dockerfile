@@ -1,5 +1,5 @@
 # 1 stage: build React static files
-FROM node:alpine as build
+FROM node as build
 
 # create and set working directory
 RUN mkdir /wealthy_ui
@@ -7,6 +7,7 @@ WORKDIR /wealthy_ui
 
 COPY ./wealthy_ui/package.json /wealthy_ui/
 COPY ./wealthy_ui/yarn.lock /wealthy_ui/
+
 RUN yarn install
 
 COPY ./wealthy_ui /wealthy_ui/

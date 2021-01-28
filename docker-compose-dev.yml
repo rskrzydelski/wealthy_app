@@ -11,6 +11,8 @@ services:
     volumes:
       - static_volume:/app/wealthy_api/wealth-service/django_static
       - ./docker/nginx/development:/etc/nginx/conf.d
+    environment:
+      NODE_OPTIONS: "--max_old_space_size=18192"
     depends_on:
       - wealthy_api
   wealthy_api:
@@ -23,6 +25,7 @@ services:
       - static_volume:/app/wealthy_api/wealth-service/django_static
     expose:
       - 8000
+      - 27017
 
 volumes:
   static_volume: {}

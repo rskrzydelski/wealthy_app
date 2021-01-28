@@ -1,4 +1,4 @@
-const serverUrl = 'http://127.0.0.1:8000'
+const serverUrl = 'http://0.0.0.0'
 // const serverUrl = 'http://192.168.1.3'
 
 const apiEntry = '/api/v1/'
